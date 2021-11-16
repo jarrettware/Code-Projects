@@ -69,7 +69,7 @@ def getSecretNum():
 
 
 def getClues(guess, secretNum):
-    """Retruns a string with the pico, fermi, bagels clues for a guesses
+    """Returns a string with the pico, fermi, bagels clues for a guesses
     and secret number pair."""
     if guess == secretNum:
         return 'You got it!'
