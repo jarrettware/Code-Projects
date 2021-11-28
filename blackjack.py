@@ -59,6 +59,25 @@ def main():
             if getHandValue(playerHand) > 21:
                 break
 
+            # Check if player has BLACKJACK
+            if getHandValue(playerHand) == 21:
+                if playerHand == [('A', SPADES), ('J', SPADES)]:
+                    print('You got BLACKJACK!!! You win ${}!'.format(bet * 10))
+                    money += bet * 10
+                    break
+                elif playerHand == [('A', SPADES), ('J', CLUBS)]:
+                    print('You got BLACKJACK!!! You win ${}!'.format(bet * 10))
+                    money += bet * 10
+                    break
+                elif playerHand == [('J', SPADES), ('A', SPADES)]:
+                    print('You got BLACKJACK!!! You win ${}!'.format(bet * 10))
+                    money += bet * 10
+                    break
+                elif playerHand == [('J', CLUBS), ('A', SPADES)]:
+                    print('You got BLACKJACK!!! You win ${}!'.format(bet * 10))
+                    money += bet * 10
+                    break
+
             # Get player move
             move = getMove(playerHand, money - bet)
 
@@ -96,32 +115,34 @@ def main():
                 displayHands(playerHand, dealerHand, False)
 
                 if getHandValue(dealerHand) > 21:
-                    print('Dealer busts! you win ${}!'.format(bet))
-                    money += bet
                     break # The dealer has busted.
-                input('Press Enter to continue...')
-                print('\n\n')
+                else:
+                    input('Press Enter to continue...')
+                    print('\n\n')
 
-                # Show the final hands:
-                displayHands(playerHand, dealerHand, True)
+            input("To display the Dealer's hand press Enter...")
+            print('\n\n')
+            
+            # Show the final hands:
+            displayHands(playerHand, dealerHand, True)
 
-                playerValue = getHandValue(playerHand)
-                dealerValue = getHandValue(dealerHand)
-                # Handle whether the player won, lost or tied
-                if dealerValue > 21:
-                    print('Dealer busts! you win ${}!'.format(bet))
-                    money += bet
-                elif (playerValue > 21) or (playerValue < dealerValue):
-                    print('You lost!')
-                    money -= bet
-                elif playerValue > dealerValue:
-                    print('You won ${}!'.format(bet))
-                    money += bet
-                elif playerValue == dealerValue:
-                    print("It's a tie, the bet is returned to you.")
+            playerValue = getHandValue(playerHand)
+            dealerValue = getHandValue(dealerHand)
+            # Handle whether the player won, lost or tied
+            if dealerValue > 21:
+                print('Dealer busts! you win ${}!'.format(bet))
+                money += bet
+            elif (playerValue > 21) or (playerValue < dealerValue):
+                print('You lost!')
+                money -= bet
+            elif playerValue > dealerValue:
+                print('You won ${}!'.format(bet))
+                money += bet
+            elif playerValue == dealerValue:
+                print("It's a tie, the bet is returned to you.")
 
-                input('Press Enter to continue...')
-                print('\n\n')
+            input('Press Enter to continue...')
+            print('\n\n')
 
 
 def getBet(maxBet):
