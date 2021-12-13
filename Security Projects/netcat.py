@@ -122,8 +122,8 @@ def client_sender(buffer):
 
         # If we detect input from stdin send it
         # If not we are going to wait for the user to punch some if __name__ == '__main__':
-            if len(buffer):
-                client.send(buffer.encode('utf-8'))
+        if len(buffer):
+            client.send(buffer.encode('utf-8'))
 
             while True:
                 # Now wait for data back
