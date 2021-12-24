@@ -1,3 +1,6 @@
+"""Simple Content brute forcer for directories and file locations"""
+
+
 import queue
 import threading
 import urllib.error
