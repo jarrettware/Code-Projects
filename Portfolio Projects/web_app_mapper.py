@@ -1,3 +1,5 @@
+"""Simple spider tool for open source web app installations that can be downloaded locally"""
+
 import Queue
 import threading
 import os
